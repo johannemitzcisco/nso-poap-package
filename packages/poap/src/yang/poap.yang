@@ -1,0 +1,73 @@
+module poap {
+
+  namespace "http://example.com/poap";
+  prefix poap;
+
+  import ietf-inet-types {
+    prefix inet;
+  }
+  import tailf-common {
+    prefix tailf;
+  }
+  import tailf-ncs {
+    prefix ncs;
+  }
+
+  description
+    "Bla bla...";
+
+  revision 2016-01-01 {
+    description
+      "Initial revision.";
+  }
+
+  container poap {
+    list device {
+      key id;
+      leaf id {
+        type string;
+      }
+      leaf poap-state {
+        type enumeration {
+          enum "UNCLAIMED";
+          enum "CLAIMED";
+        }
+      }
+      leaf device-state {
+        type enumeration {
+          enum "UNKNOWN";
+          enum "PROVISIONING";
+          enum "PROVISIONED";
+          enum "ONLINE";
+          enum "OFFLINE";
+        }
+        default "UNKNOWN";
+      }
+      leaf image-file {
+        type string;
+      }
+      leaf configuration-file {
+        type string;
+      }
+      leaf management-ip-address {
+        type inet:ipv4-address;
+      }
+    }
+
+
+    tailf:action register-device {
+      tailf:actionpoint device-actions-action;
+      input {
+        leaf device {
+          type string;
+        }
+      }
+      output {
+        leaf result {
+          type string;
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,20 @@
+<ncs-package xmlns="http://tail-f.com/ns/ncs-packages">
+  <name>poap</name>
+  <package-version>1.0</package-version>
+  <description>Nexus POAP package to enable zero touch provision when used with the included poap.py POAP script</description>
+  <ncs-min-version>4.4</ncs-min-version>
+
+  <!-- component>
+    <name>dns-service</name>
+    <application>
+      <python-class-name>dns_service.main.Main</python-class-name>
+    </application>
+  </component -->
+
+  <component>
+    <name>device-actions</name>
+    <application>
+      <python-class-name>device_actions.main.Main</python-class-name>
+    </application>
+  </component>
+</ncs-package>
